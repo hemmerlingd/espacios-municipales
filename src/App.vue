@@ -1,9 +1,6 @@
 <template>
   <div id="app">
-    <EspaciosMunicipales :lugares="lugares" @cambioCategoria="cambiarCategoria" :cargando="cargando" @cambioNombre="buscarNombre">
-      
-    </EspaciosMunicipales>
-
+    <EspaciosMunicipales :lugares="lugares" @cambioCategoria="cambiarCategoria" :cargando="cargando" @cambioNombre="buscarNombre"></EspaciosMunicipales>
   </div>
 </template>
 
@@ -17,58 +14,57 @@ export default {
     EspaciosMunicipales
   },
   methods: {
-    cambiarCategoria: function(valor){
-      if(valor == 0){
-        this.url = this.urlBase;
-      }
-      else {
+    cambiarCategoria: function(valor) {
+      if(valor == 0) {
+        this.url = this.urlCategoriasBase;
+      } else {
         this.url = this.urlBase + '?categorias_id=' + valor;
         this.categoriaSeleccionada = valor;
-    }
+      }
       this.getLugares();
     },
-        buscarNombre: function(valor){
-      if(valor == 0){
-        if (this.categoriaSeleccionada){
+    buscarNombre: function(valor) {
+      if (valor == 0) {
+        if (this.categoriaSeleccionada) {
           this.url = this.urlBase + '?categorias_id=' + valor;
+        } else{
+          this.url = this.urlCategoriasBase;
+        }
+      } else {
+        if (this.categoriaSeleccionada == null) {
+          this.url = this.urlCategoriasBase + '&q=' + valor;
         }else{
-        this.url = this.urlBase;
+          this.url = this.urlBase + '?q=' + valor + '&categorias_id=' + this.categoriaSeleccionada;
         }
       }
-      else {
-        if (this.categoriaSeleccionada == null){
-        this.url = this.urlBase + '?q=' + valor;
-      }else{
-        this.url = this.urlBase + '?q=' + valor + '&categorias_id=' + this.categoriaSeleccionada;
-      }
-    }
       this.getLugares();
     },
     getLugares() {
       let v = this;
       this.cargando = true;
-        axios.get(this.url)
-      .then(function(response){
+      axios.get(this.url)
+      .then(function(response) {
         v.lugares = response.data.results;
         v.cargando =false;
       })
-      .catch(function(){
+      .catch(function() {
         v.cargando = false;
       })
     }
   },
-  mounted: function(){
+  mounted: function() {
     this.getLugares();
   },
-  data: function(){
-      return{
+  data: function() {
+    return{
       categoria: null,
       lugares: [],
       categoriaSeleccionada: null,
       url: "https://gobiernoabierto.cordoba.gob.ar/api/lugar-actividad/",
       urlBase: "https://gobiernoabierto.cordoba.gob.ar/api/lugar-actividad/",
+      urlCategoriasBase: "https://gobiernoabierto.cordoba.gob.ar/api/lugar-actividad/?categorias_id=16,15,14,13,11,10,9,8,7,6,4",
       cargando: false
-      }
+    }
   }
 }
 
@@ -76,11 +72,16 @@ export default {
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+}
+.pagination {
+  cursor: pointer;
+}
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+  background-color: #00a665;
+  border-color: #008f57;
+}
+.pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover,.pagination>li>a, .pagination>li>span {
+  color: #00a665;
 }
 </style>
