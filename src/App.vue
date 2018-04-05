@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <EspaciosMunicipales :lugares="lugares" @cambioCategoria="cambiarCategoria" :cargando="cargando" @cambioNombre="buscarNombre"></EspaciosMunicipales>
+    <EspaciosMunicipales :lugares="lugares" @cambioCategoria="cambiarCategoria" :cargando="cargando" @cambioNombre="buscarNombre" :inicial="inicial"></EspaciosMunicipales>
   </div>
 </template>
 
@@ -50,22 +50,42 @@ export default {
       .catch(function() {
         v.cargando = false;
       })
-    }
+    },
   },
   mounted: function() {
     this.getLugares();
   },
   data: function() {
     return{
-      categoria: null,
       lugares: [],
       categoriaSeleccionada: null,
       url: "https://gobiernoabierto.cordoba.gob.ar/api/lugar-actividad/",
       urlBase: "https://gobiernoabierto.cordoba.gob.ar/api/lugar-actividad/",
       urlCategoriasBase: "https://gobiernoabierto.cordoba.gob.ar/api/lugar-actividad/?categorias_id=16,15,14,13,11,10,9,8,7,6,4",
-      cargando: false
+      cargando: false,
+      inicial: null
     }
-  }
+  },
+   created()
+  {
+    let uri = window.location.href.split('?');
+    if (uri.length == 2)
+    {
+      let vars = uri[1].split('&');
+      let parametro = '';
+      let tmp = '';
+      vars.forEach(function(v){
+        tmp = v.split('=');
+        if(tmp.length == 2)
+        parametro = tmp[1];
+      });
+      //console.log(parametro);
+      this.cambiarCategoria(parametro);
+      this.inicial = parametro;
+    }
+  },
+  updated(){
+  },
 }
 
 </script>

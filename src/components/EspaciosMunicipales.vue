@@ -32,7 +32,7 @@
 				<div v-show="!cargando" v-for="lugar in paginated('lugares')" :key="lugar.id" class="panel panel-default lugar">
 					<a :href="'/que-hacer/sitiosdeinteres/' + lugar.id + '/' + nombreToUrl(lugar.nombre)" >
 						<div class="lugar__foto panel-body" ><img v-if="lugar.fotos[0]" class="foto__img" :src="lugar.fotos[0].foto.original"/><img v-else class="foto__img" src="https://www.cordoba.gob.ar/wp-content/uploads/2017/10/catedral_de_crdoba_a_la_tarde.jpg"/></div>
-						<span class="panel-footer"><span class="lugar__nombre"><h4>{{lugar.nombre}}</h4><br/><span class="lugar__direccion"><span class="fa fa-map-marker"></span>{{lugar.direccion}}</span></span></span>
+						<div class="panel-footer"><span class="lugar__nombre"><h4>{{lugar.nombre}}</h4><span class="lugar__direccion"><span class="fa fa-map-marker"></span>{{lugar.direccion}}</span></span></div>
 					</a></div>
 				</paginate>
 				<div class="resultados__null" v-else>Sin Resultados</div>
@@ -57,7 +57,7 @@ export default {
 		},
 		nombre:  function(valor){
 			this.$emit('cambioNombre',valor)
-		} 
+		}
 	},
 	data: function(){
 		return{
@@ -71,7 +71,12 @@ export default {
 			return nombre.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/\-+/g, '-');
 		}
 	},
-	props: ["lugares", "cargando"]
+	created(){
+		if (this.inicial){
+			this.categoria = this.inicial;
+		}
+	},
+	props: ["lugares", "cargando", "inicial"]
 }
 </script>
 <style scoped>
@@ -85,7 +90,6 @@ export default {
 	width: 350px;
 	min-height: 275px;
 	margin: 5px;
-	border-radius: 10px;
 	cursor: pointer;
 }
 .lugar__foto {
@@ -98,14 +102,11 @@ export default {
 	object-fit: cover;
 	width: 100%;
 	height: 100%;
-	border-radius: 10px 10px 0 0;
 }
 .lugar__nombre {
 	font-weight: 600;
 	display: block;
 	min-height: 75px;
-	padding-top: 20px;
-	border-radius: 0 0 10px 10px;
 }
 .resultados a:hover {
 	text-decoration: none;
