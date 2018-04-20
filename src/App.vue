@@ -63,7 +63,7 @@ export default {
       urlBase: "https://gobiernoabierto.cordoba.gob.ar/api/lugar-actividad/",
       urlCategoriasBase: "https://gobiernoabierto.cordoba.gob.ar/api/lugar-actividad/?categorias_id=16,15,14,13,11,10,9,8,7,6,4",
       cargando: false,
-      inicial: null
+      inicial: "20"
     }
   },
    created()
