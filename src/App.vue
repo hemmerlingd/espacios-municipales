@@ -20,6 +20,9 @@ export default {
       } else {
         this.url = this.urlBase + '?categorias_id=' + valor;
         this.categoriaSeleccionada = valor;
+        console.log(valor);
+        var cambioURL = '?categoria=' + valor
+        window.history.pushState(window.location.href, 'cambioURL', cambioURL);
       }
       this.getLugares();
     },
@@ -79,7 +82,7 @@ export default {
         if(tmp.length == 2)
         parametro = tmp[1];
       });
-      //console.log(parametro);
+      console.log(parametro);
       this.cambiarCategoria(parametro);
       this.inicial = parametro;
     }

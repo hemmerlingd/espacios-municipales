@@ -74,6 +74,8 @@ export default {
 	created(){
 		if (this.inicial){
 			this.categoria = this.inicial;
+
+
 		}
 	},
 	props: ["lugares", "cargando", "inicial"]
