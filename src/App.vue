@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <EspaciosMunicipales :lugares="lugares" @cambioCategoria="cambiarCategoria" :cargando="cargando" @cambioNombre="buscarNombre" :inicial="inicial"></EspaciosMunicipales>
+    <EspaciosMunicipales :lugares="lugares" @cambioCategoria="cambiarCategoria" :cargando="cargando" @cambioEstrellas="buscarEstrellas" :inicial="inicial"></EspaciosMunicipales>
   </div>
 </template>
 
@@ -26,18 +26,18 @@ export default {
       }
       this.getLugares();
     },
-    buscarNombre: function(valor) {
+    buscarEstrellas: function(valor) {
       if (valor == 0) {
         if (this.categoriaSeleccionada) {
-          this.url = this.urlBase + '?categorias_id=' + valor;
+          this.url = this.urlBase + '?categorias_id=' + this.categoriaSeleccionada;
         } else{
           this.url = this.urlCategoriasBase;
         }
       } else {
-        if (this.categoriaSeleccionada == null) {
-          this.url = this.urlCategoriasBase + '&q=' + valor;
+        if (this.categoriaSeleccionada != 28) {
+          this.url = this.urlBase + '?categorias_id=' + this.categoriaSeleccionada;
         }else{
-          this.url = this.urlBase + '?q=' + valor + '&categorias_id=' + this.categoriaSeleccionada;
+          this.url = this.urlBase + '?estrellas=' + valor + '&categorias_id=' + this.categoriaSeleccionada;
         }
       }
       this.getLugares();

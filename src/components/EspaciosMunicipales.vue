@@ -1,29 +1,29 @@
 <template>
 	<div class="contenedor">
 		<div class="row">
+			<h1>ALOJAMIENTOS</h1>
 			<div class="form-inline filtros">
 				<div class="form-group">
-					<label class="form-control-static">Categoría:</label>
+					<label class="form-control-static">Tipo:
 					<select class="form-control filtro__categoria" v-model="categoria">
-						<option selected value="0">Todos</option>
-						<option value="13">Alojamiento</option>
-						<option value="16">Centro Comercial</option>
-						<option value="10">Centro Deportivo</option>			
-						<option value="17">Experiencia</option>			
-						<option value="14">Gastronomía</option>
-						<option value="6">Iglesia</option>
-						<option value="4">Museo</option>
-						<option value="11">Oficina de Turismo</option>
-						<option value="9">Paseo</option>
-						<option value="8">Peatonal</option>
-						<option value="7">Plaza</option>
-						<option value="18">Polo Gastronómico</option>
-						<option value="15">Teatro</option>
-					</select>
+						<option selected value="13">Todos</option>
+						<option value="26">Apart Hotel</option>
+						<option value="27">Camping</option>
+						<option value="25">Hostel</option>
+						<option value="28">Hotel</option>			
+						<option value="29">Hotel Boutique</option>			
+					</select></label>
 				</div>
-				<div class="form-group">
-					<label class="form-control-static">Nombre:</label>
-					<input type="text" class="form-control" v-model="nombre" placeholder="Ingrese el nombre">
+				<div class="form-group" v-if="categoria==28">
+					<label class="form-control-static"  >Estrellas:</label>
+					<select class="form-control filtro__estrellas" v-model="estrellas" >
+						<option selected value="0">Todos</option>
+						<option value="1">⭐</option>
+						<option value="2">⭐⭐</option>
+						<option value="3">⭐⭐⭐</option>			
+						<option value="4">⭐⭐⭐⭐</option>			
+						<option value="5">⭐⭐⭐⭐⭐</option>
+					</select>
 				</div>
 			</div>
 		</div>
@@ -53,17 +53,18 @@ export default {
 	name: 'EspaciosMunicipales',
 	watch: {
 		categoria: function(valor){
-			this.$emit('cambioCategoria',valor)
+			this.$emit('cambioCategoria',valor);
+			this.estrellas="0";
 		},
-		nombre:  function(valor){
-			this.$emit('cambioNombre',valor)
+		estrellas:  function(valor){
+			this.$emit('cambioEstrellas',valor)
 		}
 	},
 	data: function(){
 		return{
 			categoria: 0,
 			paginate: ['lugares'],
-			nombre: null
+			estrellas: null		
 		}
 	},
 	methods: {
@@ -74,8 +75,6 @@ export default {
 	created(){
 		if (this.inicial){
 			this.categoria = this.inicial;
-
-
 		}
 	},
 	props: ["lugares", "cargando", "inicial"]
