@@ -62,7 +62,7 @@ export default {
 	},
 	data: function(){
 		return{
-			categoria: 0,
+			categoria: 13,
 			paginate: ['lugares'],
 			estrellas: null		
 		}

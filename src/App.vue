@@ -61,12 +61,12 @@ export default {
   data: function() {
     return{
       lugares: [],
-      categoriaSeleccionada: null,
-      url: "https://gobiernoabierto.cordoba.gob.ar/api/lugar-actividad/",
+      categoriaSeleccionada: 13,
+      url: "https://gobiernoabierto.cordoba.gob.ar/api/lugar-actividad/?categorias_id=13",
       urlBase: "https://gobiernoabierto.cordoba.gob.ar/api/lugar-actividad/",
-      urlCategoriasBase: "https://gobiernoabierto.cordoba.gob.ar/api/lugar-actividad/?categorias_id=16,15,14,13,11,10,9,8,7,6,4",
+      urlCategoriasBase: "https://gobiernoabierto.cordoba.gob.ar/api/lugar-actividad/?categorias_id=13",
       cargando: false,
-      inicial: null
+      inicial: 13
     }
   },
    created()
