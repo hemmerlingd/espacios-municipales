@@ -11,7 +11,8 @@
 						<option value="27">Camping</option>
 						<option value="25">Hostel</option>
 						<option value="28">Hotel</option>			
-						<option value="29">Hotel Boutique</option>			
+						<option value="29">Hotel Boutique</option>	
+						<option value="30">Otros</option>			
 					</select></label>
 				</div>
 				<div class="form-group" v-if="categoria==28">
