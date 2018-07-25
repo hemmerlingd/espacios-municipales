@@ -18,7 +18,7 @@ export default {
       if(valor == 0) {
         this.url = this.urlCategoriasBase;
       } else {
-        this.url = this.urlBase + '?categorias_id=' + valor;
+        this.url = this.urlBase + '&categorias_id=' + valor;
         this.categoriaSeleccionada = valor;
         console.log(valor);
         var cambioURL = '?categoria=' + valor
@@ -29,7 +29,7 @@ export default {
     buscarNombre: function(valor) {
       if (valor == 0) {
         if (this.categoriaSeleccionada) {
-          this.url = this.urlBase + '?categorias_id=' + valor;
+          this.url = this.urlBase + '&categorias_id=' + valor;
         } else{
           this.url = this.urlCategoriasBase;
         }
@@ -37,7 +37,7 @@ export default {
         if (this.categoriaSeleccionada == null) {
           this.url = this.urlCategoriasBase + '&q=' + valor;
         }else{
-          this.url = this.urlBase + '?q=' + valor + '&categorias_id=' + this.categoriaSeleccionada;
+          this.url = this.urlBase + '&q=' + valor + '&categorias_id=' + this.categoriaSeleccionada;
         }
       }
       this.getLugares();
@@ -62,9 +62,9 @@ export default {
     return{
       lugares: [],
       categoriaSeleccionada: null,
-      url: "https://gobiernoabierto.cordoba.gob.ar/api/lugar-actividad/",
-      urlBase: "https://gobiernoabierto.cordoba.gob.ar/api/lugar-actividad/",
-      urlCategoriasBase: "https://gobiernoabierto.cordoba.gob.ar/api/lugar-actividad/?categorias_id=16,15,14,13,11,10,9,8,7,6,4",
+      url: "https://gobiernoabierto.cordoba.gob.ar/api/lugar-actividad/?circuito_id=3",
+      urlBase: "https://gobiernoabierto.cordoba.gob.ar/api/lugar-actividad/?circuito_id=3",
+      urlCategoriasBase: "https://gobiernoabierto.cordoba.gob.ar/api/lugar-actividad/?circuito_id=3&categorias_id=16,15,14,13,11,10,9,8,7,6,4",
       cargando: false,
       inicial: null
     }

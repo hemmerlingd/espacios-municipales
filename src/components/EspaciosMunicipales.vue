@@ -15,7 +15,6 @@
 						<option value="9">Paseo</option>
 						<option value="8">Peatonal</option>
 						<option value="7">Plaza</option>
-						<option value="18">Polo Gastronómico</option>
 						<option value="15">Teatro</option>
 					</select>
 				</div>
