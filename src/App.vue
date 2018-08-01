@@ -26,22 +26,6 @@ export default {
       }
       this.getLugares();
     },
-    buscarEstrellas: function(valor) {
-      if (valor == 0) {
-        if (this.categoriaSeleccionada) {
-          this.url = this.urlBase + '?categorias_id=' + this.categoriaSeleccionada;
-        } else{
-          this.url = this.urlCategoriasBase;
-        }
-      } else {
-        if (this.categoriaSeleccionada != 28) {
-          this.url = this.urlBase + '?categorias_id=' + this.categoriaSeleccionada;
-        }else{
-          this.url = this.urlBase + '?estrellas=' + valor + '&categorias_id=' + this.categoriaSeleccionada;
-        }
-      }
-      this.getLugares();
-    },
     getLugares() {
       let v = this;
       this.cargando = true;
@@ -61,12 +45,12 @@ export default {
   data: function() {
     return{
       lugares: [],
-      categoriaSeleccionada: 13,
-      url: "https://gobiernoabierto.cordoba.gob.ar/api/lugar-actividad/?categorias_id=13",
+      categoriaSeleccionada: 11,
+      url: "https://gobiernoabierto.cordoba.gob.ar/api/lugar-actividad/?categorias_id=11",
       urlBase: "https://gobiernoabierto.cordoba.gob.ar/api/lugar-actividad/",
-      urlCategoriasBase: "https://gobiernoabierto.cordoba.gob.ar/api/lugar-actividad/?categorias_id=13",
+      urlCategoriasBase: "https://gobiernoabierto.cordoba.gob.ar/api/lugar-actividad/?categorias_id=11",
       cargando: false,
-      inicial: 13
+      inicial: 11
     }
   },
    created()

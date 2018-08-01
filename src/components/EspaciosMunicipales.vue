@@ -1,33 +1,6 @@
 <template>
 	<div class="contenedor">
-		<div class="row">
-			<h1>ALOJAMIENTOS</h1>
-			<div class="form-inline filtros">
-				<div class="form-group">
-					<label class="form-control-static">Tipo:
-					<select class="form-control filtro__categoria" v-model="categoria">
-						<option selected value="13">Todos</option>
-						<option value="26">Apart Hotel</option>
-						<option value="27">Camping</option>
-						<option value="25">Hostel</option>
-						<option value="28">Hotel</option>			
-						<option value="29">Hotel Boutique</option>	
-						<option value="30">Otros</option>			
-					</select></label>
-				</div>
-				<div class="form-group" v-if="categoria==28">
-					<label class="form-control-static"  >Estrellas:</label>
-					<select class="form-control filtro__estrellas" v-model="estrellas" >
-						<option selected value="0">Todos</option>
-						<option value="1">⭐</option>
-						<option value="2">⭐⭐</option>
-						<option value="3">⭐⭐⭐</option>			
-						<option value="4">⭐⭐⭐⭐</option>			
-						<option value="5">⭐⭐⭐⭐⭐</option>
-					</select>
-				</div>
-			</div>
-		</div>
+			
 		<div class="row">
 			<paginate name="lugares" :list="lugares" :per="12" v-if="lugares.length>0" class="col-md-12 resultados">
 				<div v-show="!cargando" v-for="lugar in paginated('lugares')" :key="lugar.id" class="panel panel-default lugar">
@@ -57,13 +30,10 @@ export default {
 			this.$emit('cambioCategoria',valor);
 			this.estrellas="0";
 		},
-		estrellas:  function(valor){
-			this.$emit('cambioEstrellas',valor)
-		}
 	},
 	data: function(){
 		return{
-			categoria: 13,
+			categoria: 11,
 			paginate: ['lugares'],
 			estrellas: null		
 		}
