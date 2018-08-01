@@ -1,29 +1,6 @@
 <template>
 	<div class="contenedor">
-		<div class="row">
-			<div class="form-inline filtros">
-				<div class="form-group">
-					<label class="form-control-static">Categoría:</label>
-					<select class="form-control filtro__categoria" v-model="categoria">
-						<option selected value="0">Todos</option>
-						<option value="16">Centro Comercial</option>
-						<option value="10">Centro Deportivo</option>			
-						<option value="17">Experiencia</option>			
-						<option value="6">Iglesia</option>
-						<option value="4">Museo</option>
-						<option value="11">Oficina de Turismo</option>
-						<option value="9">Paseo</option>
-						<option value="8">Peatonal</option>
-						<option value="7">Plaza</option>
-						<option value="15">Teatro</option>
-					</select>
-				</div>
-				<div class="form-group">
-					<label class="form-control-static">Nombre:</label>
-					<input type="text" class="form-control" v-model="nombre" placeholder="Ingrese el nombre">
-				</div>
-			</div>
-		</div>
+
 		<div class="row">
 			<paginate name="lugares" :list="lugares" :per="12" v-if="lugares.length>0" class="col-md-12 resultados">
 				<div v-show="!cargando" v-for="lugar in paginated('lugares')" :key="lugar.id" class="panel panel-default lugar">

@@ -62,9 +62,9 @@ export default {
     return{
       lugares: [],
       categoriaSeleccionada: null,
-      url: "https://gobiernoabierto.cordoba.gob.ar/api/lugar-actividad/?circuito_id=3",
-      urlBase: "https://gobiernoabierto.cordoba.gob.ar/api/lugar-actividad/?circuito_id=3",
-      urlCategoriasBase: "https://gobiernoabierto.cordoba.gob.ar/api/lugar-actividad/?circuito_id=3&categorias_id=16,15,14,13,11,10,9,8,7,6,4",
+      url: "https://gobiernoabierto.cordoba.gob.ar/api/lugar-actividad/?circuito_id=1",
+      urlBase: "https://gobiernoabierto.cordoba.gob.ar/api/lugar-actividad/?circuito_id=1",
+      urlCategoriasBase: "https://gobiernoabierto.cordoba.gob.ar/api/lugar-actividad/?circuito_id=1&categorias_id=16,15,14,13,11,10,9,8,7,6,4",
       cargando: false,
       inicial: null
     }
