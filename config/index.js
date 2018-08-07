@@ -43,7 +43,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/wp-content/uploads/proyectos/sitios-turismo/',
+    assetsPublicPath: '/wp-content/uploads/proyectos/centros-deportivos/',
 
     /**
      * Source Maps
