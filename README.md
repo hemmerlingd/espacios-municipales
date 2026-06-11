@@ -1,3 +1,4 @@
+<!--HIDDEN-->
 # espacios-municipales
 
 > A Vue.js project
